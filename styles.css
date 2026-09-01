@@ -4,8 +4,8 @@
 --------------------------------------------------- */
 
 :root {
-  --maroon: #6b2138;
-  --maroon-dark: #4c1727;
+  --maroon: #700909;
+  --maroon-dark: #4e0606;
   --navy: #263343;
   --navy-dark: #1a232f;
   --cream: #f3e7d7;
@@ -14,8 +14,8 @@
   --ink: #211a1c;
   --ink-soft: rgba(33, 26, 28, 0.68);
 
-  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --sans: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Bodoni Moda", "Iowan Old Style", Georgia, serif;
+  --sans: "Poppins", "Helvetica Neue", Arial, sans-serif;
 
   --sky-deep: #8fb8e8;
 
@@ -206,13 +206,6 @@ p { margin: 0; }
 
 .btn-primary:hover { background: var(--maroon-dark); transform: translateY(-2px); }
 
-.btn-ghost {
-  border-color: var(--ink);
-  color: var(--ink);
-}
-
-.btn-ghost:hover { border-color: var(--maroon); color: var(--maroon); transform: translateY(-2px); }
-
 .btn-lg { padding: 18px 38px; font-size: 1rem; }
 
 /* -------------------- decorative shapes -------------------- */
@@ -316,32 +309,6 @@ p { margin: 0; }
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 18px;
   box-shadow: 0 20px 40px -18px rgba(38, 51, 67, 0.4);
-}
-
-.glass-card-main {
-  left: -6%;
-  bottom: 12%;
-  padding: 20px 22px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 220px;
-}
-
-.glass-card-main .deco-check {
-  width: 20px;
-  margin-bottom: 0;
-  flex-shrink: 0;
-  color: var(--maroon-dark);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.glass-card-main p {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--navy-dark);
 }
 
 .glass-card-chip {
@@ -645,7 +612,6 @@ p { margin: 0; }
 
   .hero-inner { grid-template-columns: 1fr; }
   .hero-visual { min-height: 320px; margin-top: 24px; }
-  .glass-card-main { left: 4%; }
   .glass-card-chip { right: 4%; }
 }
 
