@@ -16,3 +16,25 @@ mainNav.querySelectorAll("a").forEach((link) => {
     navToggle.setAttribute("aria-expanded", "false");
   });
 });
+
+const hero = document.getElementById("hero");
+const blobWrap = document.getElementById("blobWrap");
+const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (hero && blobWrap && canHover && !prefersReducedMotion) {
+  const maxOffset = 34;
+
+  hero.addEventListener("mousemove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    const relX = (event.clientX - rect.left) / rect.width - 0.5;
+    const relY = (event.clientY - rect.top) / rect.height - 0.5;
+    const tx = (relX * 2 * maxOffset).toFixed(1);
+    const ty = (relY * 2 * maxOffset).toFixed(1);
+    blobWrap.style.transform = `translate(${tx}px, ${ty}px)`;
+  });
+
+  hero.addEventListener("mouseleave", () => {
+    blobWrap.style.transform = "translate(0px, 0px)";
+  });
+}

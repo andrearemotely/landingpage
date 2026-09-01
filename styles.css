@@ -19,6 +19,11 @@
 
   --sky-deep: #8fb8e8;
 
+  --blob-1: #eaf2ff;
+  --blob-2: #b7d8fe;
+  --blob-3: #5f93d6;
+  --blob-4: #2f5f9e;
+
   --max: 1180px;
   --radius: 4px;
   --radius-btn: 14px;
@@ -280,26 +285,27 @@ p { margin: 0; }
   justify-content: center;
 }
 
-.blob {
-  position: relative;
-  width: 78%;
+.blob-wrap {
+  width: 88%;
+  max-width: 420px;
   aspect-ratio: 1 / 1;
-  max-width: 380px;
-  background: radial-gradient(circle at 32% 28%, #d7e9fe 0%, var(--sky) 48%, var(--sky-deep) 100%);
-  border-radius: 62% 38% 55% 45% / 55% 45% 62% 38%;
-  box-shadow: 0 30px 60px -20px rgba(38, 51, 67, 0.35);
-  animation: blobDrift 10s ease-in-out infinite;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
-.blob::before {
-  content: "";
-  position: absolute;
-  inset: -18%;
-  background: inherit;
-  border-radius: inherit;
-  filter: blur(50px);
-  opacity: 0.55;
-  z-index: -1;
+.blob {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(at 25% 20%, var(--blob-1) 0px, transparent 62%),
+    radial-gradient(at 78% 18%, var(--blob-3) 0px, transparent 58%),
+    radial-gradient(at 80% 78%, rgba(28, 58, 102, 0.78) 0px, transparent 62%),
+    radial-gradient(at 20% 78%, var(--blob-2) 0px, transparent 58%),
+    linear-gradient(160deg, var(--blob-2) 0%, var(--blob-4) 100%);
+  border-radius: 62% 38% 55% 45% / 55% 45% 62% 38%;
+  filter: blur(42px);
+  animation: blobDrift 10s ease-in-out infinite;
 }
 
 .glass-card {
