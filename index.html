@@ -156,22 +156,30 @@
         <h2>Three phases, from clarity to a system your business can actually run on.</h2>
       </div>
 
-      <div class="offer-grid">
-        <div class="offer-card">
-          <span class="offer-num">01</span>
-          <h3>Clarity session</h3>
-          <p>A focused working session to map how your business actually operates today: every step, every tool, every gap. You walk away with a documented picture of where things stand and what needs to change.</p>
+      <div class="offer-carousel" id="offerCarousel">
+        <div class="offer-grid" id="offerGrid">
+          <div class="offer-card">
+            <span class="offer-num">01</span>
+            <h3>Clarity session</h3>
+            <p>A focused working session to map how your business actually operates today: every step, every tool, every gap. You walk away with a documented picture of where things stand and what needs to change.</p>
+          </div>
+          <div class="offer-card offer-card-mid">
+            <span class="offer-num">02</span>
+            <h3>System design</h3>
+            <p>Based on the clarity session, I design the system: what goes where, how work flows, who owns what, how clients get onboarded. The output is a clear blueprint, ready to be built in ClickUp or Notion by a specialist.</p>
+          </div>
+          <div class="offer-card">
+            <span class="offer-num">03</span>
+            <h3>Ongoing support</h3>
+            <p class="offer-optional">Available when needed</p>
+            <p>A light monthly check in to catch what's working, what's breaking, and what needs adjusting as your business grows.</p>
+          </div>
         </div>
-        <div class="offer-card offer-card-mid">
-          <span class="offer-num">02</span>
-          <h3>System design</h3>
-          <p>Based on the clarity session, I design the system: what goes where, how work flows, who owns what, how clients get onboarded. The output is a clear blueprint, ready to be built in ClickUp or Notion by a specialist.</p>
-        </div>
-        <div class="offer-card">
-          <span class="offer-num">03</span>
-          <h3>Ongoing support</h3>
-          <p class="offer-optional">Available when needed</p>
-          <p>A light monthly check in to catch what's working, what's breaking, and what needs adjusting as your business grows.</p>
+
+        <div class="offer-dots" id="offerDots">
+          <button type="button" class="offer-dot is-active" aria-label="Show phase 1, clarity session" data-index="0"></button>
+          <button type="button" class="offer-dot" aria-label="Show phase 2, system design" data-index="1"></button>
+          <button type="button" class="offer-dot" aria-label="Show phase 3, ongoing support" data-index="2"></button>
         </div>
       </div>
     </div>

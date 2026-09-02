@@ -462,6 +462,31 @@ p { margin: 0; }
   .offer-grid { scroll-behavior: auto; }
 }
 
+.offer-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.offer-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(33, 26, 28, 0.18);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.offer-dot:hover { background: var(--sky-deep); }
+
+.offer-dot.is-active {
+  background: var(--maroon);
+  transform: scale(1.2);
+}
+
 .offer-card {
   background: var(--cream-soft);
   border: 1px solid rgba(33, 26, 28, 0.12);

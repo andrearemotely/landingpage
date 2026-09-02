@@ -39,10 +39,15 @@ if (hero && blobWrap && canHover && !prefersReducedMotion) {
   });
 }
 
-const offerGrid = document.querySelector(".offer-grid");
+const offerCarousel = document.getElementById("offerCarousel");
+const offerGrid = document.getElementById("offerGrid");
+const offerDots = document.querySelectorAll(".offer-dot");
 
-if (offerGrid) {
-  offerGrid.addEventListener(
+if (offerCarousel && offerGrid) {
+  // Listen on the full-width wrapper, not just the narrow centered card,
+  // so a scroll anywhere near the carousel (not only precisely over it)
+  // advances the cards.
+  offerCarousel.addEventListener(
     "wheel",
     (event) => {
       const atStart = offerGrid.scrollLeft <= 0;
@@ -56,4 +61,24 @@ if (offerGrid) {
     },
     { passive: false }
   );
+}
+
+if (offerGrid && offerDots.length) {
+  const cardWidth = () => offerGrid.firstElementChild.getBoundingClientRect().width + 24;
+
+  offerDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = Number(dot.dataset.index);
+      offerGrid.scrollTo({ left: index * cardWidth(), behavior: "smooth" });
+    });
+  });
+
+  let scrollTimeout;
+  offerGrid.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const index = Math.round(offerGrid.scrollLeft / cardWidth());
+      offerDots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+    }, 80);
+  });
 }
