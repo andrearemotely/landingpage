@@ -239,13 +239,18 @@ p { margin: 0; }
 }
 
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  position: relative;
+  min-height: 480px;
+  display: flex;
   align-items: center;
-  gap: 48px;
 }
 
-.hero-copy { text-align: left; }
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  text-align: left;
+}
 
 .hero h1 {
   font-size: clamp(2.1rem, 3.6vw, 3.4rem);
@@ -271,18 +276,24 @@ p { margin: 0; }
   justify-content: flex-start;
 }
 
-/* -------------------- hero visual: blob + glass -------------------- */
+/* -------------------- hero visual: background blob -------------------- */
 .hero-visual {
-  position: relative;
-  min-height: 420px;
+  position: absolute;
+  top: 50%;
+  right: -8%;
+  transform: translateY(-50%);
+  width: 76%;
+  max-width: 680px;
+  aspect-ratio: 1 / 1;
+  z-index: 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .blob-wrap {
-  width: 88%;
-  max-width: 420px;
+  width: 100%;
   aspect-ratio: 1 / 1;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
@@ -572,16 +583,11 @@ p { margin: 0; }
 
   .trait-grid { grid-template-columns: 1fr; }
 
-  .hero-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 28px;
+  .hero-visual {
+    right: -12%;
+    width: 78%;
+    max-width: 400px;
   }
-  .hero-copy { display: contents; }
-  .hero-head { order: 1; }
-  .hero-visual { order: 2; min-height: 320px; }
-  .hero-body { order: 3; margin-top: 0; }
 }
 
 @media (max-width: 760px) {
@@ -623,4 +629,10 @@ p { margin: 0; }
   .wrap { padding: 0 20px; }
   .btn { width: 100%; }
   .hero-actions { flex-direction: column; width: 100%; }
+
+  .hero-visual {
+    top: 42%;
+    right: -20%;
+    width: 92%;
+  }
 }
