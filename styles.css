@@ -301,30 +301,6 @@ p { margin: 0; }
   animation: blobDrift 10s ease-in-out infinite;
 }
 
-.glass-card {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.32);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 18px;
-  box-shadow: 0 20px 40px -18px rgba(38, 51, 67, 0.4);
-}
-
-.glass-card-chip {
-  top: 8%;
-  right: -4%;
-  padding: 10px 16px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--maroon-dark);
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass-card { background: rgba(250, 243, 234, 0.92); }
-}
-
 /* -------------------- generic section -------------------- */
 .section { padding: 96px 0; }
 
@@ -612,7 +588,6 @@ p { margin: 0; }
 
   .hero-inner { grid-template-columns: 1fr; }
   .hero-visual { min-height: 320px; margin-top: 24px; }
-  .glass-card-chip { right: 4%; }
 }
 
 @media (max-width: 760px) {
