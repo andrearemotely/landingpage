@@ -23,6 +23,12 @@
   --blob-2: #b7d8fe;
   --blob-3: #5f93d6;
   --blob-4: #2f5f9e;
+  --blob-bg:
+    radial-gradient(at 25% 20%, var(--blob-1) 0px, transparent 62%),
+    radial-gradient(at 78% 18%, var(--blob-3) 0px, transparent 58%),
+    radial-gradient(at 80% 78%, rgba(28, 58, 102, 0.78) 0px, transparent 62%),
+    radial-gradient(at 20% 78%, var(--blob-2) 0px, transparent 58%),
+    linear-gradient(160deg, var(--blob-2) 0%, var(--blob-4) 100%);
 
   --max: 1180px;
   --radius: 4px;
@@ -303,15 +309,32 @@ p { margin: 0; }
   position: relative;
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(at 25% 20%, var(--blob-1) 0px, transparent 62%),
-    radial-gradient(at 78% 18%, var(--blob-3) 0px, transparent 58%),
-    radial-gradient(at 80% 78%, rgba(28, 58, 102, 0.78) 0px, transparent 62%),
-    radial-gradient(at 20% 78%, var(--blob-2) 0px, transparent 58%),
-    linear-gradient(160deg, var(--blob-2) 0%, var(--blob-4) 100%);
+  background: var(--blob-bg);
   border-radius: 62% 38% 55% 45% / 55% 45% 62% 38%;
   filter: blur(42px);
   animation: blobDrift 10s ease-in-out infinite;
+}
+
+/* -------------------- corner blob accents -------------------- */
+/* small, low opacity echoes of the hero blob, tying sections together */
+.corner-blob {
+  position: absolute;
+  background: var(--blob-bg);
+  border-radius: 62% 38% 55% 45% / 55% 45% 62% 38%;
+  filter: blur(26px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.corner-blob-who { width: 260px; height: 260px; top: -60px; right: -60px; }
+.corner-blob-pain { width: 220px; height: 220px; bottom: -50px; left: -50px; opacity: 0.4; }
+.corner-blob-change { width: 200px; height: 200px; bottom: -40px; right: 8%; }
+.corner-blob-values { width: 240px; height: 240px; top: -50px; left: -60px; }
+.corner-blob-footer { width: 220px; height: 220px; bottom: -60px; right: -40px; opacity: 0.4; }
+
+@media (max-width: 760px) {
+  .corner-blob { transform: scale(0.75); }
 }
 
 /* -------------------- generic section -------------------- */
@@ -320,6 +343,8 @@ p { margin: 0; }
 .section-head { max-width: 640px; margin-bottom: 52px; }
 
 /* -------------------- who i serve -------------------- */
+.who { position: relative; overflow: hidden; isolation: isolate; }
+
 .trait-grid {
   list-style: none;
   margin: 0;
@@ -361,6 +386,9 @@ p { margin: 0; }
 
 /* -------------------- pain -------------------- */
 .pain {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--navy-dark);
   color: var(--cream);
 }
@@ -409,6 +437,8 @@ p { margin: 0; }
 }
 
 /* -------------------- what changes -------------------- */
+.change { position: relative; overflow: hidden; isolation: isolate; }
+
 .change-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -531,6 +561,8 @@ p { margin: 0; }
 }
 
 /* -------------------- values -------------------- */
+.values { position: relative; overflow: hidden; isolation: isolate; }
+
 .values-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -576,6 +608,9 @@ p { margin: 0; }
 
 /* -------------------- footer -------------------- */
 .site-footer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--navy-dark);
   color: rgba(243, 231, 215, 0.7);
   padding: 48px 0;
