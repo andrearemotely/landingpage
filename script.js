@@ -38,3 +38,22 @@ if (hero && blobWrap && canHover && !prefersReducedMotion) {
     blobWrap.style.transform = "translate(0px, 0px)";
   });
 }
+
+const offerGrid = document.querySelector(".offer-grid");
+
+if (offerGrid) {
+  offerGrid.addEventListener(
+    "wheel",
+    (event) => {
+      const atStart = offerGrid.scrollLeft <= 0;
+      const atEnd = offerGrid.scrollLeft + offerGrid.clientWidth >= offerGrid.scrollWidth - 1;
+      const scrollingForward = event.deltaY > 0;
+
+      if ((scrollingForward && !atEnd) || (!scrollingForward && !atStart)) {
+        event.preventDefault();
+        offerGrid.scrollLeft += event.deltaY;
+      }
+    },
+    { passive: false }
+  );
+}
