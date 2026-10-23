@@ -1,3 +1,43 @@
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (!prefersReducedMotion && "IntersectionObserver" in window) {
+  document.documentElement.classList.add("js-reveal");
+
+  const revealEls = document.querySelectorAll(
+    [
+      ".hero-head",
+      ".hero-body",
+      ".section-head",
+      ".about-grid",
+      ".trait-grid li",
+      ".pain-col",
+      ".change-card",
+      ".case-card",
+      ".metric-card",
+      ".value-card",
+      ".offer-carousel",
+      ".cta-inner",
+      ".footer-inner",
+    ].join(",")
+  );
+
+  revealEls.forEach((el) => el.classList.add("reveal"));
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const navToggle = document.getElementById("navToggle");
@@ -20,7 +60,6 @@ mainNav.querySelectorAll("a").forEach((link) => {
 const hero = document.getElementById("hero");
 const blobWrap = document.getElementById("blobWrap");
 const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (hero && blobWrap && canHover && !prefersReducedMotion) {
   const maxOffset = 34;

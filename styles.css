@@ -94,6 +94,48 @@ p { margin: 0; }
   max-width: 46ch;
 }
 
+/* -------------------- scroll reveal -------------------- */
+/* .reveal only hides content once script.js has added js-reveal to
+   <html>, so the page is never stuck invisible if JS fails to run. */
+html.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.trait-grid li:nth-child(2),
+.change-card:nth-child(2),
+.case-card:nth-child(2),
+.metric-card:nth-child(2),
+.value-card:nth-child(2),
+.pain-col:nth-child(2) { transition-delay: 0.1s; }
+
+.trait-grid li:nth-child(3),
+.change-card:nth-child(3),
+.case-card:nth-child(3),
+.metric-card:nth-child(3),
+.value-card:nth-child(3) { transition-delay: 0.2s; }
+
+.trait-grid li:nth-child(4),
+.change-card:nth-child(4),
+.case-card:nth-child(4),
+.value-card:nth-child(4) { transition-delay: 0.3s; }
+
+.change-card:nth-child(5) { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* -------------------- grain / texture -------------------- */
 .grain {
   position: fixed;
@@ -703,7 +745,7 @@ p { margin: 0; }
 .case-card-takeaway .case-label { color: var(--sky); }
 .case-card-takeaway p { color: rgba(250, 243, 234, 0.9); }
 
-/* -------------------- portfolio: systems -------------------- */
+/* -------------------- portfolio: systems (metric cards) -------------------- */
 .systems { position: relative; overflow: hidden; isolation: isolate; }
 
 .systems-grid {
@@ -712,114 +754,55 @@ p { margin: 0; }
   gap: 24px;
 }
 
-.system-card {
+.metric-card {
   background: var(--cream-soft);
   border: 1px solid rgba(33, 26, 28, 0.12);
   border-radius: var(--radius);
-  padding: 32px;
+  padding: 36px 32px 32px;
   display: flex;
   flex-direction: column;
 }
 
-.system-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
-
-.system-card > p { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 18px; }
-
-.system-stat {
-  margin-top: auto;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.9rem;
+.metric-number {
+  font-family: var(--serif);
+  font-style: italic;
   font-weight: 600;
+  font-size: clamp(3.2rem, 5vw, 4rem);
+  line-height: 1;
   color: var(--maroon-dark);
-  padding-top: 16px;
+  margin: 0;
+}
+
+.metric-to {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin: 0 8px;
+  vertical-align: 0.6em;
+}
+
+.metric-unit {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--maroon);
+  margin: 10px 0 0;
+}
+
+.metric-detail {
+  margin-top: 22px;
+  padding-top: 20px;
   border-top: 1px solid rgba(33, 26, 28, 0.1);
 }
 
-.system-stat .deco-check { width: 18px; margin-bottom: 0; margin-top: 2px; flex-shrink: 0; }
+.metric-detail h3 { font-size: 1.05rem; margin-bottom: 8px; }
 
-.estimate { font-weight: 400; font-style: italic; color: var(--ink-soft); }
+.metric-detail p { color: var(--ink-soft); font-size: 0.94rem; }
 
 .corner-blob-systems { width: 200px; height: 200px; bottom: -40px; left: 6%; }
-
-/* -------------------- portfolio: client hub -------------------- */
-.hub .section-head { margin-bottom: 44px; }
-
-.hub-frame {
-  max-width: 820px;
-  margin: 0 auto;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(33, 26, 28, 0.14);
-  box-shadow: 0 30px 60px -32px rgba(33, 26, 28, 0.35);
-}
-
-.hub-frame-bar {
-  display: flex;
-  gap: 7px;
-  padding: 14px 18px;
-  background: var(--navy-dark);
-}
-
-.hub-frame-bar span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(243, 231, 215, 0.3);
-}
-
-.hub-frame-body {
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(160deg, rgba(183, 216, 254, 0.5) 0%, var(--cream-soft) 70%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-align: center;
-  padding: 40px;
-}
-
-.hub-frame-icon { width: 32px; color: var(--maroon); margin-bottom: 4px; }
-
-.hub-frame-body p {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--navy);
-}
-
-.hub-frame-note {
-  font-family: var(--sans) !important;
-  font-style: normal !important;
-  font-size: 0.9rem !important;
-  color: var(--ink-soft) !important;
-  max-width: 36ch;
-}
-
-.hub-video {
-  margin-top: 24px;
-  text-align: center;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-
-.hub-video-badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--maroon);
-  background: rgba(112, 9, 9, 0.08);
-  border: 1px solid rgba(112, 9, 9, 0.2);
-  padding: 4px 10px;
-  border-radius: 999px;
-  margin-right: 10px;
-  vertical-align: middle;
-}
 
 /* -------------------- responsive -------------------- */
 @media (max-width: 900px) {
